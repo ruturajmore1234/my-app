@@ -19,6 +19,12 @@ const StyledButton = styled.button`
   }
 `
 class  App extends Component {
+
+  constructor(props){
+    super(props);
+    console.log("[App.js] constructor");
+  }
+
   state = {
     persons: [
       { id: "bwn", name: "Maxim", age: 28 },
@@ -61,7 +67,17 @@ class  App extends Component {
     this.setState({persons: persons})
   }
 
+  componentDidMount(){
+    console.log("[App.js] componentDidMount");
+  }
+
+  static getDerivedStateFromProps(prop, state){
+    console.log("[App.js] getDerivedStateFromProps");
+    return state;
+  }
+
   render(){
+    console.log("[App.js] render");
     const style = {
       margin: '10px',
       backgroundColor: 'green',
