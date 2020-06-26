@@ -67,16 +67,25 @@ class  App extends Component {
     this.setState({persons: persons})
   }
 
-  componentDidMount(){
+  componentDidMount() {
     console.log("[App.js] componentDidMount");
   }
 
-  static getDerivedStateFromProps(prop, state){
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("[App.js] shouldComponentUpdate");
+    return true;
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log("[App.js] componentDidUpdate");
+  }
+
+  static getDerivedStateFromProps(prop, state) {
     console.log("[App.js] getDerivedStateFromProps");
     return state;
   }
 
-  render(){
+  render() {
     console.log("[App.js] render");
     const style = {
       margin: '10px',
