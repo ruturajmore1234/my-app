@@ -4,8 +4,9 @@ import classes from './Cockpit.module.css'
 const Cockpit = (props) => {
   useEffect(() => {
     console.log("[Cockpit.js] useEffect")
-    setTimeout(() => alert('Saved to the cloud!'), 1000);
+    const timer = setTimeout(() => alert('Saved to the cloud!'), 1000);
     return () => {
+      clearTimeout(timer);
       console.log("[Cockpit.js] clean up work in useEffect");
     }
   }, []); //componentDidMount
