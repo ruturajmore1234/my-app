@@ -5,7 +5,17 @@ const Cockpit = (props) => {
   useEffect(() => {
     console.log("[Cockpit.js] useEffect")
     setTimeout(() => alert('Saved to the cloud!'), 1000);
+    return () => {
+      console.log("[Cockpit.js] clean up work in useEffect");
+    }
   }, []); //componentDidMount
+
+  useEffect(() => {
+    console.log("[Cockpit.js] 2nd useEffect")
+    return () => {
+      console.log("[Cockpit.js] 2nd clean up work in useEffect");
+    }
+  });
 
   const assignedClasses = [];
   let btnClass = [classes.Button];

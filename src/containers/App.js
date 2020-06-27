@@ -31,7 +31,8 @@ class  App extends Component {
       { id: "asg", name: "Manu", age: 26 },
       { id: "okm", name: "Stephanie", age: 19 }
     ],
-    showPersons: false
+    showPersons: false,
+    showCockpit: true
   };
 
   switchNameHandler = (newName) => {
@@ -112,10 +113,13 @@ class  App extends Component {
 
     return (
       <div className={classes.App}>
-        <Cockpit 
-        showPersons={this.state.showPersons}
-        persons={this.state.persons}
-        clicked={this.toggelPersonsHandler}/>
+        <button onClick={() => this.setState({showCockpit: false})}>Remove Cockpit!</button>
+        <button onClick={() => this.setState({showCockpit: true})}>Add Cockpit!</button>
+        {this.state.showCockpit ? <Cockpit
+          showPersons={this.state.showPersons}
+          persons={this.state.persons}
+          clicked={this.toggelPersonsHandler}/> : null
+        }
         <StyledButton 
           alt={this.state.showPersons}
           key="aaa"
