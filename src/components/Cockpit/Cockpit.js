@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import classes from './Cockpit.module.css'
 
 const Cockpit = (props) => {
-
- useEffect(() => {
+  useEffect(() => {
     console.log("[Cockpit.js] useEffect")
- });
+    setTimeout(() => alert('Saved to the cloud!'), 1000);
+  }, []); //componentDidMount
 
   const assignedClasses = [];
   let btnClass = [classes.Button];
@@ -20,7 +20,6 @@ const Cockpit = (props) => {
     assignedClasses.push(classes.bold);
   }
 
-  
   return (
     <div>
       <h1>Hi, I am a react app !</h1>
