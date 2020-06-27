@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import classes from './Cockpit.module.css'
 
 const Cockpit = (props) => {
+
   useEffect(() => {
     console.log("[Cockpit.js] useEffect")
     const timer = setTimeout(() => alert('Saved to the cloud!'), 1000);
