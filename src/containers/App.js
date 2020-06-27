@@ -117,7 +117,7 @@ class  App extends Component {
         <button onClick={() => this.setState({showCockpit: true})}>Add Cockpit!</button>
         {this.state.showCockpit ? <Cockpit
           showPersons={this.state.showPersons}
-          persons={this.state.persons}
+          personsLength={this.state.persons.length}
           clicked={this.toggelPersonsHandler}/> : null
         }
         <StyledButton 
