@@ -34,7 +34,8 @@ class  App extends Component {
       { id: "okm", name: "Stephanie", age: 19 }
     ],
     showPersons: false,
-    showCockpit: true
+    showCockpit: true,
+    changedCounter: 0
   };
 
   switchNameHandler = (newName) => {
@@ -54,9 +55,12 @@ class  App extends Component {
     person.name = event.target.value;
     const persons = [...this.state.persons];
     persons[personIndex] = person;
-    this.setState({
-      persons: persons
-    })
+    this.setState((prevState, props) => {
+      return {
+        persons: persons,
+        changedCounter: prevState.changedCounter + 1
+      }
+    });
   }
 
   toggelPersonsHandler = () => {
