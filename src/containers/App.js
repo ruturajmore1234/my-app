@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import classes from './App.module.css';
-import Persons from '../components/Persons/Persons.js'
-import styled from 'styled-components'
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary.js'
-import Cockpit from '../components/Cockpit/Cockpit.js'
+import Persons from '../components/Persons/Persons.js';
+import styled from 'styled-components';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary.js';
+import Cockpit from '../components/Cockpit/Cockpit.js';
+import WithClass from '../hoc/WithClass.js'
 
 const StyledButton = styled.button`
   margin: 10px;
@@ -112,7 +113,7 @@ class  App extends Component {
     }
 
     return (
-      <div className={classes.App}>
+      <WithClass classes={classes.App}>
         <button onClick={() => this.setState({showCockpit: false})}>Remove Cockpit!</button>
         <button onClick={() => this.setState({showCockpit: true})}>Add Cockpit!</button>
         {this.state.showCockpit ? <Cockpit
@@ -125,7 +126,7 @@ class  App extends Component {
           key="aaa"
           onClick={this.switchNameHandler.bind(this, "Maximilian")}>Switch Name</StyledButton>
         {persons}
-      </div>
+      </WithClass>
     );
   }
 }
