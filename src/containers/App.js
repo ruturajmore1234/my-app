@@ -4,7 +4,8 @@ import Persons from '../components/Persons/Persons.js';
 import styled from 'styled-components';
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary.js';
 import Cockpit from '../components/Cockpit/Cockpit.js';
-import WithClass from '../hoc/WithClass.js'
+import withClass from '../hoc/withClass.js';
+import Aux from '../hoc/Aux.js';
 
 const StyledButton = styled.button`
   margin: 10px;
@@ -113,7 +114,7 @@ class  App extends Component {
     }
 
     return (
-      <WithClass classes={classes.App}>
+      <Aux classes={classes.App}>
         <button onClick={() => this.setState({showCockpit: false})}>Remove Cockpit!</button>
         <button onClick={() => this.setState({showCockpit: true})}>Add Cockpit!</button>
         {this.state.showCockpit ? <Cockpit
@@ -126,12 +127,12 @@ class  App extends Component {
           key="aaa"
           onClick={this.switchNameHandler.bind(this, "Maximilian")}>Switch Name</StyledButton>
         {persons}
-      </WithClass>
+      </Aux>
     );
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
 
 
 
