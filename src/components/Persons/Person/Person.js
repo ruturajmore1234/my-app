@@ -12,18 +12,22 @@ class Person extends Component {
     this.inputElementRef = React.createRef();
   }
 
+  static contextType = AuthContext;
+
   componentDidMount(){
     // this.inputElement.focus(); <- Old Approach
     this.inputElementRef.current.focus();
+    console.log(this.context.authenticated);
   }
 
   render(){
     console.log("[Person.js] render");
     return (
       <Fragment>  {/* className={classes.Person} it didn't got applied*/}
-        <AuthContext.Consumer>
+        {/* <AuthContext.Consumer>
           {(context) => context.authenticated ? <p style={{color: "green"}}>Authenticated</p> : <p style={{color: "blue"}}>Please Login</p>}
-        </AuthContext.Consumer>
+        </AuthContext.Consumer> */}
+        { this.context.authenticated ? <p style={{color: "green"}}>Authenticated</p> : <p style={{color: "blue"}}>Please Login</p> }
         <p onClick={this.props.click}>I am {this.props.name} and I am {this.props.age} years old person!</p>
         <p>{this.props.children}</p>
         <input
