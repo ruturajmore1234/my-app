@@ -5,13 +5,30 @@ import withClass from '../../../hoc/withClass.js'
 import PropTypes from 'prop-types';
 
 class Person extends Component {
+
+  constructor(props){
+    super(props);
+    this.inputElementRef = React.createRef();
+  }
+
+  componentDidMount(){
+    // this.inputElement.focus(); <- Old Approach
+    this.inputElementRef.current.focus();
+  }
+
   render(){
     console.log("[Person.js] render");
     return (
       <Fragment>  {/* className={classes.Person} it didn't got applied*/}
         <p onClick={this.props.click}>I am {this.props.name} and I am {this.props.age} years old person!</p>
         <p>{this.props.children}</p>
-        <input type="text" onChange={this.props.change} value={this.props.name}/>
+        <input
+          // ref={(inputEl) => {this.inputElement = inputEl}} <- Old Approach
+          ref={this.inputElementRef}
+          type="text"
+          onChange={this.props.change}
+          value={this.props.name}
+        />
       </Fragment>
     );
   }
