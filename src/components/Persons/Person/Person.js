@@ -3,6 +3,7 @@ import classes from './Person.module.css';
 import Aux from '../../../hoc/Aux.js'
 import withClass from '../../../hoc/withClass.js'
 import PropTypes from 'prop-types';
+import AuthContext from '../../../context/auth-context.js'
 
 class Person extends Component {
 
@@ -20,6 +21,9 @@ class Person extends Component {
     console.log("[Person.js] render");
     return (
       <Fragment>  {/* className={classes.Person} it didn't got applied*/}
+        <AuthContext.Consumer>
+          {(context) => context.authenticated ? <p style={{color: "green"}}>Authenticated</p> : <p style={{color: "blue"}}>Please Login</p>}
+        </AuthContext.Consumer>
         <p onClick={this.props.click}>I am {this.props.name} and I am {this.props.age} years old person!</p>
         <p>{this.props.children}</p>
         <input
